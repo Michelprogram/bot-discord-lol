@@ -1,0 +1,24 @@
+{
+  "name": "bot_discord",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "canvas": "^2.7.0",
+    "cheerio": "^1.0.0-rc.9",
+    "discord": "^0.8.2",
+    "discord.js": "^12.5.3",
+    "jsdom": "^16.5.3",
+    "minidom": "^1.0.0",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.7",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

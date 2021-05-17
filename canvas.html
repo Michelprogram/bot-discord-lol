@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #tutoriel{
+        border:2px solid black;
+        background-color: #2f3136;
+    }
+</style>
+<body>
+    <canvas id="tutoriel" width="700" height="500">
+    </canvas>
+</body>
+</html>
+
+
+
+<script>
+    const  test = {
+        rune_1: [
+    'http://opgg-static.akamaized.net/images/lol/perk/8112.png?image=q_auto:best&v=1620787344',
+    'http://opgg-static.akamaized.net/images/lol/perk/8139.png?image=q_auto:best&v=1620787344',
+    'http://opgg-static.akamaized.net/images/lol/perk/8138.png?image=q_auto:best&v=1620787344',
+    'http://opgg-static.akamaized.net/images/lol/perk/8135.png?image=q_auto:best&v=1620787344'
+  ],
+  rune_2: [
+    'http://opgg-static.akamaized.net/images/lol/perk/8345.png?image=q_auto:best&v=1620787344',
+    'http://opgg-static.akamaized.net/images/lol/perk/8352.png?image=q_auto:best&v=1620787344'
+  ],
+  fragment: [
+    'http://opgg-static.akamaized.net/images/lol/perkShard/5005.png?image=q_auto:best&v=1620787344',
+    'http://opgg-static.akamaized.net/images/lol/perkShard/5008.png?image=q_auto:best&v=1620787344',
+    'http://opgg-static.akamaized.net/images/lol/perkShard/5003.png?image=q_auto:best&v=1620787344']
+    }
+
+    class Canvas_Draw{
+        constructor(){
+            this.ctx = document.getElementById('tutoriel').getContext('2d')
+        }
+
+        __draw_img = (ctx,link,x,y,res) =>{
+            const img = new Image()
+            img.onload = () => ctx.drawImage(img,x,y,res,res)
+            img.src = link
+        }
+
+        draw_title = (name,poste) =>{
+            const title = `Rune ${name.toUpperCase()} ${poste.toUpperCase()}`
+            this.ctx.font ='40px sans-serif'
+            this.ctx.fillStyle = "white"
+            this.ctx.fillText(title,10,50)
+        }
+
+        draw_champ_img = () =>{
+            this.__draw_img(this.ctx,'https://opgg-static.akamaized.net/images/lol/champion/Leblanc.png',500,0,100)
+        }
+
+        draw_runes = (list,x) =>{
+            let compteur = 100
+            for(let i = 0;i<list.length;i++){
+                this.__draw_img(this.ctx,list[i],x,compteur,50)
+                compteur+=70
+            }
+        }
+    }
+
+    /*
+    const Test_draw = new Canvas_Draw()
+    Test_draw.draw_champ_img()
+    Test_draw.draw_title("leblanc","mid")
+    Test_draw.draw_runes(test.rune_1,60)
+    Test_draw.draw_runes(test.rune_2,260)
+    Test_draw.draw_runes(test.fragment,420)
+    */
+
+    let te = 0
+
+    fetch('https://ddragon.leagueoflegends.com/cdn/9.3.1/data/en_US/champion.json')
+    .then(data=>data.text()
+    .then(d=>console.log(t = JSON.parse(d).data)))
+
+    
+
+</script>
